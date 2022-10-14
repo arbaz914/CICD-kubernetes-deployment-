@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: project.devops
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: project.devops
+   template:
+      metadata:
+        labels:
+          app: project.devops
+      spec:
+       containers:
+        - name: project.devops
+          image: arbaz14/pipeline-demo
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
